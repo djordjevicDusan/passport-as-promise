@@ -1,6 +1,6 @@
 {
   "name": "passport-as-promise",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Dusan Djordjevic <theneura@live.com>",
   "description": "Wrap passport methods and returns them as a promise",
   "keywords": [
