@@ -1,6 +1,15 @@
 import passportModule, {AuthenticateOptions, Strategy} from "passport"
 
 export class PassportAsPromise {
+  use(strategy: Strategy): this
+  use(strategy: Strategy, name?: string): this {
+    if (name) {
+      passportModule.use(name, strategy)
+      return this
+    }
+    passportModule.use(strategy)
+    return this
+  }
   authenticate(strategy: string | string[] | Strategy): (...args: any[]) => Promise<any>
   authenticate(
     strategy: string | string[] | Strategy,
