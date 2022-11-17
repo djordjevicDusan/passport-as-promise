@@ -10,4 +10,31 @@ npm install passport-as-promise
 ```
 
 ## Usage
-#TODO
+
+```ts
+import passport from "passport-as-promise"
+
+// Define strategy as usual
+passport.use(
+  new LocalStrategy(
+    {
+      usernameField: "email",
+      passwordField: "password",
+    },
+    async (email, password, done) => {
+      const user = await User.findOne({email})
+      if (!user || !(await user.validPassword(password))) {
+        return done(new UnauthorizedError())
+      }
+      return done(null, user)
+    },
+  ),
+)
+
+// Authentication
+try {
+  const user = await passport.authenticate("local", {session: false})(req, res)
+} catch (err: any) {
+  // Handle error
+}
+```
