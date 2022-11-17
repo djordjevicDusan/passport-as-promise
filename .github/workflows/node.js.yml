@@ -29,5 +29,3 @@ jobs:
         run: yarn --frozen-lockfile
       - name: Linting
         run: yarn lint
-      - name: Testing
-        run: yarn test
